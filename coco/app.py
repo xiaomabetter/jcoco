@@ -12,7 +12,7 @@ import signal
 import eventlet
 from eventlet.debug import hub_prevent_multiple_readers
 
-from jms.service import AppService
+from .jms.service import AppService
 
 from .config import Config
 from .sshd import SSHServer
@@ -114,13 +114,6 @@ class Coco:
     def make_logger(self):
         create_logger(self)
 
-    def load_extra_conf_from_server(self):
-        configs = self.service.load_config_from_server()
-        logger.debug("Loading config from server: {}".format(
-            json.dumps(configs)
-        ))
-        self.config.update(configs)
-
     @staticmethod
     def new_command_recorder():
         return CommandRecorder()
@@ -132,10 +125,9 @@ class Coco:
     def bootstrap(self):
         self.make_logger()
         self.service.initial()
-        self.load_extra_conf_from_server()
         self.keep_heartbeat()
         self.monitor_sessions()
-        self.monitor_sessions_replay()
+        #self.monitor_sessions_replay()
 
     def heartbeat(self):
         _sessions = [s.to_json() for s in self.sessions]

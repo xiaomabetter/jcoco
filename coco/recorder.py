@@ -61,6 +61,7 @@ class ReplayRecorder(metaclass=abc.ABCMeta):
         config = deepcopy(current_app.config["REPLAY_STORAGE"])
         config["SERVICE"] = app_service
         self.storage = jms_storage.get_object_storage(config)
+        print('storage:',self.storage)
 
     def upload_replay(self, session_id, times=3):
         if times < 1:
