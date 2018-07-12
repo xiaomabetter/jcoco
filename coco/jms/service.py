@@ -94,7 +94,7 @@ class AppService(Service):
         self.save_access_key()
 
     def save_access_key(self):
-        self.access_key.swave_to_file()
+        self.access_key.save_to_file()
 
 
 class UserService(Service):
