@@ -52,10 +52,10 @@ class User(Decoder):
         return self.id != 0
 
     def __str__(self):
-        return self.name
+        return self.username
 
     def __repr__(self):
-        return self.name
+        return self.username
 
 
 class Asset(Decoder):

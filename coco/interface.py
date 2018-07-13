@@ -81,6 +81,8 @@ class SSHInterface(paramiko.ServerInterface):
     def check_auth_publickey(self, username, key):
         key = key.get_base64()
         user = self.validate_auth(username, public_key=key)
+        print('pub')
+        print(user)
         if not user:
             logger.debug("Public key auth <%s> failed, try to password" % username)
             return paramiko.AUTH_FAILED
