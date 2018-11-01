@@ -1,4 +1,4 @@
-# Jumpserver terminal
+# 基于Jumpserver terminal改造
 
 Jumpserver terminal is a sub app of Jumpserver.
 
